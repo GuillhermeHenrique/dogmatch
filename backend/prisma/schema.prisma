@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String  @id @default(uuid())
+  name     String
+  email    String  @unique
+  password String
+  image    String?
+  phone    String
+
+  pets      Pet[] @relation("UserPets")
+  adoptions Pet[] @relation("UserAdoptions")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Pet {
+  id        String  @id @default(uuid())
+  name      String
+  age       Int
+  weight    Float
+  color     String
+  available Boolean @default(true)
+
+  images PetImage[]
+
+  userId String
+  user   User   @relation("UserPets", fields: [userId], references: [id], onDelete: Cascade)
+
+  adoptedById String?
+  adopter     User?   @relation("UserAdoptions", fields: [adoptedById], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("pets")
+}
+
+model PetImage {
+  id  String @id @default(uuid())
+  url String
+
+  petId String
+  pet   Pet    @relation(fields: [petId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@map("pet_images")
+}
