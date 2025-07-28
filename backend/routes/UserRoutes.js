@@ -2,7 +2,7 @@ import { Router } from "express";
 
 const router = Router();
 
-import UserController from "../controllers/UserControllers.js";
+import UserController from "../controllers/UserController.js";
 
 // middleware
 import checkToken from "../helpers/check-token.js";
