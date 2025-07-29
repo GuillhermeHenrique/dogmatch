@@ -10,6 +10,10 @@ bun.lockb
 dist
 build
 
+# Vite cache (frontend)
+.vite
+.cache
+
 # Environment variables
 .env
 .env.local
@@ -24,7 +28,7 @@ logs
 *.seed
 *.pid.lock
 
-# OS
+# OS generated files
 .DS_Store
 Thumbs.db
 
@@ -35,18 +39,23 @@ Thumbs.db
 # TypeScript
 *.tsbuildinfo
 
-# Prisma
+# Prisma (backend)
 backend/prisma/migrations/
 backend/prisma/generated/
 backend/prisma/dev.db
 *.db-journal
 
-# Uploads (Multer)
+# Uploads (Multer - backend)
 backend/public/images
 
-# React / Vite / Cache
-.cache
-.vite
+# React/Vite (frontend)
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.cache/
 
 # Test coverage
 coverage
+
+# Eslint cache
+.eslintcache
