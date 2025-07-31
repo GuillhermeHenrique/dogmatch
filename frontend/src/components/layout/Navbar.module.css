@@ -1,0 +1,52 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em 1.5em;
+  align-items: center;
+  box-shadow: 0 0 10px 9px #0000001d;
+}
+
+.logo {
+  width: min-content;
+  height: min-content;
+  display: flex;
+  align-items: center;
+}
+
+.logo h2 {
+  color: #028fed;
+}
+
+.logo img {
+  width: 80px;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 2em;
+  list-style: none;
+}
+
+.navbar ul li a {
+  font-size: 20px;
+  text-decoration: none;
+
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.navbar ul li a:hover {
+  color: #131313;
+}
+
+.navbar .login_bottom a {
+  padding: 15px 25px;
+  background-color: #131313;
+  border-radius: 25px;
+  color: #fff;
+}
+
+.navbar .login_bottom a:hover {
+  opacity: 0.9;
+  color: #fff;
+}

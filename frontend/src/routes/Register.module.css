@@ -1,0 +1,45 @@
+.form_container {
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: 15px;
+}
+
+.form_container .title {
+  border-left: 6px solid #028fed;
+}
+
+.form_container .title h1 {
+  padding-left: 0.5em;
+}
+
+.form_container input[type="submit"] {
+  padding: 12px 25px;
+  background-color: #131313;
+  border-radius: 25px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  min-width: 100px;
+  width: 100%;
+  border: none;
+  margin: 10px auto;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.form_container input[type="submit"]:hover {
+  background-color: #028fed;
+}
+
+.form_container p {
+  text-align: center;
+}
+
+.form_container p a {
+  color: #000;
+  transition: 0.3s;
+}
+
+.form_container p a:hover {
+  color: #028fed;
+}

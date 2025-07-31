@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fbfbfb;
+}
+
+h1,
+h2 {
+  font-weight: 900;
+  color: #131313;
+}
+
+p,
+a,
+label {
+  font-weight: 600;
+  color: #363636;
+}
