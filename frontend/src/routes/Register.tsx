@@ -1,12 +1,31 @@
+import { useState, useContext } from "react";
+
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 import classes from "./Register.module.css";
 
 import Input from "../components/form/Input";
 
+// context
+import { UserContext } from "../context/UserContext";
+
+type User = {
+  name: string;
+  email: string;
+  phone: number;
+  password: string;
+  confirmpassword: string;
+};
+
 const Register = () => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState<User>({
+    name: "",
+    email: "",
+    phone: 0,
+    password: "",
+    confirmpassword: "",
+  });
+  const { register } = useContext(UserContext);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -15,8 +34,7 @@ const Register = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    //send user data to database
-    console.log(user);
+    register(user);
   };
 
   return (

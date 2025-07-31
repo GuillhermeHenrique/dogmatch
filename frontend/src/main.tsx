@@ -12,6 +12,9 @@ import Home from "./routes/Home.tsx";
 import Register from "./routes/Register.tsx";
 import Login from "./routes/Login.tsx";
 
+// context
+import { UserProvider } from "./context/UserContext.tsx";
+
 const router = createBrowserRouter([
   {
     element: <App />,
@@ -34,6 +37,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
   </StrictMode>
 );
