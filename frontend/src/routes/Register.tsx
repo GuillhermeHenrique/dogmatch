@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import classes from "./Register.module.css";
 
@@ -26,6 +26,7 @@ const Register = () => {
     confirmpassword: "",
   });
   const { register } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -35,6 +36,10 @@ const Register = () => {
     e.preventDefault();
 
     register(user);
+
+    setTimeout(() => {
+      navigate("/");
+    }, 3000);
   };
 
   return (

@@ -1,4 +1,16 @@
+import { useEffect, useState } from "react";
+
+import type { AxiosError } from "axios";
+
 import api from "../utils/api";
+
+import { useFlashMessage } from "./useFlashMessage";
+
+type UserToken = {
+  message: string;
+  token: string;
+  UserId: string;
+};
 
 type User = {
   name: string;
@@ -9,17 +21,40 @@ type User = {
 };
 
 export const useAuth = () => {
+  const [authenticated, setAuthenticated] = useState<boolean>(false);
+  const { setFlashMessage } = useFlashMessage();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`;
+      setAuthenticated(true);
+    }
+  }, []);
+
+  const authUser = async (data: UserToken) => {
+    setAuthenticated(true);
+
+    localStorage.setItem("token", JSON.stringify(data.token));
+  };
+
   const register = async (user: User) => {
     try {
       const response = await api.post("/users/register", user);
 
-      console.log(response);
+      setFlashMessage("Registration completed successfully!", "success");
 
-      return response.data;
+      await authUser(response.data);
     } catch (error) {
-      console.log(error);
+      const err = error as AxiosError<{ message: string }>;
+
+      let msgText =
+        err.response?.data?.message || "An unexpected error occurred";
+
+      setFlashMessage(msgText, "error");
     }
   };
 
-  return { register };
+  return { authenticated, register };
 };

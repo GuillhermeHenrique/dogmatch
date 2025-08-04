@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, type PropsWithChildren } from "react";
 
 import { useAuth } from "../hooks/useAuth";
 
@@ -11,17 +11,21 @@ type User = {
 };
 
 type UserContextType = {
+  authenticated: boolean;
   register: (user: User) => Promise<void>;
 };
 
 export const UserContext = createContext<UserContextType>({
+  authenticated: false,
   register: async () => {},
 });
 
-export const UserProvider = ({ children }: { children: React.ReactNode }) => {
-  const { register } = useAuth();
+export const UserProvider = ({ children }: PropsWithChildren) => {
+  const { authenticated, register } = useAuth();
 
   return (
-    <UserContext.Provider value={{ register }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ authenticated, register }}>
+      {children}
+    </UserContext.Provider>
   );
 };
