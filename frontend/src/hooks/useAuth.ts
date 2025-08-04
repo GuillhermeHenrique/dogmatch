@@ -49,12 +49,20 @@ export const useAuth = () => {
     } catch (error) {
       const err = error as AxiosError<{ message: string }>;
 
-      let msgText =
+      const msgText =
         err.response?.data?.message || "An unexpected error occurred";
 
       setFlashMessage(msgText, "error");
     }
   };
 
-  return { authenticated, register };
+  const logout = () => {
+    setAuthenticated(false);
+    localStorage.removeItem("token");
+    api.defaults.headers.Authorization = "";
+
+    setFlashMessage("Logout successful!", "success");
+  };
+
+  return { authenticated, register, logout };
 };

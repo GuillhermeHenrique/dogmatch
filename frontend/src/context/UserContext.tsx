@@ -13,18 +13,20 @@ type User = {
 type UserContextType = {
   authenticated: boolean;
   register: (user: User) => Promise<void>;
+  logout: () => void;
 };
 
 export const UserContext = createContext<UserContextType>({
   authenticated: false,
   register: async () => {},
+  logout: () => {},
 });
 
 export const UserProvider = ({ children }: PropsWithChildren) => {
-  const { authenticated, register } = useAuth();
+  const { authenticated, register, logout } = useAuth();
 
   return (
-    <UserContext.Provider value={{ authenticated, register }}>
+    <UserContext.Provider value={{ authenticated, register, logout }}>
       {children}
     </UserContext.Provider>
   );

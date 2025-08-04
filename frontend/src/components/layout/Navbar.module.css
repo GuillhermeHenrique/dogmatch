@@ -25,6 +25,7 @@
   display: flex;
   gap: 2em;
   list-style: none;
+  align-items: center;
 }
 
 .navbar ul li a {
@@ -47,6 +48,22 @@
 }
 
 .navbar .login_bottom a:hover {
+  opacity: 0.9;
+  color: #fff;
+}
+
+.navbar .exit_bottom {
+  padding: 15px 25px;
+  background-color: #131313;
+  border-radius: 25px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.navbar .exit_bottom:hover {
   opacity: 0.9;
   color: #fff;
 }
