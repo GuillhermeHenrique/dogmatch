@@ -4,12 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 
 import classes from "./Register.module.css";
 
-import Input from "../components/form/Input";
+import Input from "../../components/form/Input";
 
 // context
-import { UserContext } from "../context/UserContext";
+import { UserContext } from "../../context/UserContext";
 
-import type { UserLogin } from "../types/User";
+import type { UserLogin } from "../../types/User";
 
 const Login = () => {
   const [user, setUser] = useState<UserLogin>({

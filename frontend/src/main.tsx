@@ -9,8 +9,8 @@ import App from "./App.tsx";
 
 // routes
 import Home from "./routes/Home.tsx";
-import Register from "./routes/Register.tsx";
-import Login from "./routes/Login.tsx";
+import Register from "./routes/Auth/Register.tsx";
+import Login from "./routes/Auth/Login.tsx";
 
 // context
 import { UserProvider } from "./context/UserContext.tsx";
