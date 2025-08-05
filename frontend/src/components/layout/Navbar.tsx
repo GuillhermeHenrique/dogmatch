@@ -32,6 +32,9 @@ const Navbar = () => {
           {authenticated ? (
             <>
               <li>
+                <Link to="/user/profile">Profile</Link>
+              </li>
+              <li>
                 <button onClick={handleLogout} className={classes.exit_bottom}>
                   Exit
                 </button>

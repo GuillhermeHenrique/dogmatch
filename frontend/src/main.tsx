@@ -11,6 +11,7 @@ import App from "./App.tsx";
 import Home from "./routes/Home.tsx";
 import Register from "./routes/Auth/Register.tsx";
 import Login from "./routes/Auth/Login.tsx";
+import Profile from "./routes/User/Profile.tsx";
 
 // context
 import { UserProvider } from "./context/UserContext.tsx";
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/user/profile",
+        element: <Profile />,
       },
     ],
   },
