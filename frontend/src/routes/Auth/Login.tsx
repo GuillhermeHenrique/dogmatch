@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 
-import classes from "./Register.module.css";
+import classes from "./Form.module.css";
 
 import Input from "../../components/form/Input";
 
