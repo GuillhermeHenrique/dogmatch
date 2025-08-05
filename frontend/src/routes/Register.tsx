@@ -9,16 +9,10 @@ import Input from "../components/form/Input";
 // context
 import { UserContext } from "../context/UserContext";
 
-type User = {
-  name: string;
-  email: string;
-  phone: number;
-  password: string;
-  confirmpassword: string;
-};
+import type { UserRegister } from "../types/User";
 
 const Register = () => {
-  const [user, setUser] = useState<User>({
+  const [user, setUser] = useState<UserRegister>({
     name: "",
     email: "",
     phone: 0,

@@ -1,5 +1,6 @@
-import { Link, redirect } from "react-router-dom";
 import { useContext } from "react";
+
+import { Link, redirect } from "react-router-dom";
 
 import classes from "./Navbar.module.css";
 

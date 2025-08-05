@@ -2,31 +2,27 @@ import { createContext, type PropsWithChildren } from "react";
 
 import { useAuth } from "../hooks/useAuth";
 
-type User = {
-  name: string;
-  email: string;
-  phone: number;
-  password: string;
-  confirmpassword: string;
-};
+import type { UserRegister, UserLogin } from "../types/User";
 
 type UserContextType = {
   authenticated: boolean;
-  register: (user: User) => Promise<void>;
+  register: (user: UserRegister) => Promise<void>;
+  login: (user: UserLogin) => Promise<void>;
   logout: () => void;
 };
 
 export const UserContext = createContext<UserContextType>({
   authenticated: false,
   register: async () => {},
+  login: async () => {},
   logout: () => {},
 });
 
 export const UserProvider = ({ children }: PropsWithChildren) => {
-  const { authenticated, register, logout } = useAuth();
+  const { authenticated, register, login, logout } = useAuth();
 
   return (
-    <UserContext.Provider value={{ authenticated, register, logout }}>
+    <UserContext.Provider value={{ authenticated, register, login, logout }}>
       {children}
     </UserContext.Provider>
   );
