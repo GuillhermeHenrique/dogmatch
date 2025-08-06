@@ -1,23 +1,84 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import formClasses from "../Auth/Form.module.css";
 
+import api from "../../utils/api";
+
+import type { AxiosError } from "axios";
+
+import { useFlashMessage } from "../../hooks/useFlashMessage";
+
 import Input from "../../components/form/Input";
 
-import type { UserRegister } from "../../types/User";
+import type { User } from "../../types/User";
 
 const Profile = () => {
-  const [user, setUser] = useState<UserRegister>({
+  const [user, setUser] = useState<User>({
     name: "",
     email: "",
     phone: 0,
     password: "",
     confirmpassword: "",
   });
+  const [token] = useState(localStorage.getItem("token") || "");
+  const { setFlashMessage } = useFlashMessage();
 
-  const onFileChange = () => {};
+  useEffect(() => {
+    api
+      .get("/users/checkuser", {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(token)}`,
+        },
+      })
+      .then((response) => {
+        setUser(response.data);
+      });
+  }, [token]);
 
-  const handleChange = () => {};
+  const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files?.[0]) {
+      setUser({ ...user, [e.target.name]: e.target.files[0] });
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+
+    (Object.keys(user) as (keyof User)[]).forEach((key) => {
+      const value = user[key];
+
+      if (value instanceof File) {
+        formData.append(key, value); // keep image like file
+      } else {
+        formData.append(key, String(value));
+      }
+    });
+
+    try {
+      const response = await api.patch(`/users/edit/${user.id}`, formData, {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(token)}`,
+        },
+      });
+
+      setFlashMessage("Updated successfully!", "success");
+
+      return response.data;
+    } catch (error) {
+      const err = error as AxiosError<{ message: string }>;
+
+      const msgText =
+        err.response?.data?.message || "An unexpected error occurred";
+
+      setFlashMessage(msgText, "error");
+    }
+  };
 
   return (
     <div className={formClasses.form_container}>
@@ -25,7 +86,7 @@ const Profile = () => {
         <h1>Profile</h1>
       </div>
       <p>Preview Image</p>
-      <form>
+      <form onSubmit={handleSubmit}>
         <Input
           text="Image"
           type="file"
