@@ -6,7 +6,7 @@ import api from "../utils/api";
 
 import { useFlashMessage } from "./useFlashMessage";
 
-import type { UserRegister, UserLogin } from "../types/User";
+import type { UserRegister, UserLogin, User } from "../types/User";
 
 type UserToken = {
   message: string;
@@ -67,6 +67,48 @@ export const useAuth = () => {
     }
   };
 
+  const updateUser = async (user: User) => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      setFlashMessage("User not authenticated!", "error");
+      return;
+    }
+
+    const formData = new FormData();
+
+    (Object.keys(user) as (keyof User)[]).forEach((key) => {
+      const value = user[key];
+
+      if (value === undefined || value === null) return;
+
+      if (value instanceof File) {
+        formData.append(key, value); // keep image like file
+      } else {
+        formData.append(key, String(value));
+      }
+    });
+
+    try {
+      const response = await api.patch(`/users/edit/${user.id}`, formData, {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(token)}`,
+        },
+      });
+
+      setFlashMessage("Updated successfully!", "success");
+
+      return response.data;
+    } catch (error) {
+      const err = error as AxiosError<{ message: string }>;
+
+      const msgText =
+        err.response?.data?.message || "An unexpected error occurred";
+
+      setFlashMessage(msgText, "error");
+    }
+  };
+
   const logout = () => {
     setAuthenticated(false);
     localStorage.removeItem("token");
@@ -75,5 +117,5 @@ export const useAuth = () => {
     setFlashMessage("Logout successful!", "success");
   };
 
-  return { authenticated, register, login, logout };
+  return { authenticated, register, login, updateUser, logout };
 };

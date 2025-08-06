@@ -1,27 +1,27 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import formClasses from "../Auth/Form.module.css";
 
 import api from "../../utils/api";
 
-import type { AxiosError } from "axios";
-
-import { useFlashMessage } from "../../hooks/useFlashMessage";
-
 import Input from "../../components/form/Input";
+
+// context
+import { UserContext } from "../../context/UserContext";
 
 import type { User } from "../../types/User";
 
 const Profile = () => {
   const [user, setUser] = useState<User>({
+    id: "",
     name: "",
     email: "",
     phone: 0,
     password: "",
     confirmpassword: "",
   });
+  const { updateUser } = useContext(UserContext);
   const [token] = useState(localStorage.getItem("token") || "");
-  const { setFlashMessage } = useFlashMessage();
 
   useEffect(() => {
     api
@@ -48,36 +48,7 @@ const Profile = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const formData = new FormData();
-
-    (Object.keys(user) as (keyof User)[]).forEach((key) => {
-      const value = user[key];
-
-      if (value instanceof File) {
-        formData.append(key, value); // keep image like file
-      } else {
-        formData.append(key, String(value));
-      }
-    });
-
-    try {
-      const response = await api.patch(`/users/edit/${user.id}`, formData, {
-        headers: {
-          Authorization: `Bearer ${JSON.parse(token)}`,
-        },
-      });
-
-      setFlashMessage("Updated successfully!", "success");
-
-      return response.data;
-    } catch (error) {
-      const err = error as AxiosError<{ message: string }>;
-
-      const msgText =
-        err.response?.data?.message || "An unexpected error occurred";
-
-      setFlashMessage(msgText, "error");
-    }
+    updateUser(user);
   };
 
   return (
