@@ -1,10 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 
+// css
+import classes from "./Profile.module.css";
 import formClasses from "../Auth/Form.module.css";
 
 import api from "../../utils/api";
 
+// componentes
 import Input from "../../components/form/Input";
+import RoundedImage from "../../components/layout/RoundedImage";
 
 // context
 import { UserContext } from "../../context/UserContext";
@@ -20,6 +24,7 @@ const Profile = () => {
     password: "",
     confirmpassword: "",
   });
+  const [preview, setPreview] = useState<File | null>(null);
   const { updateUser } = useContext(UserContext);
   const [token] = useState(localStorage.getItem("token") || "");
 
@@ -37,6 +42,8 @@ const Profile = () => {
 
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.[0]) {
+      setPreview(e.target.files[0]);
+
       setUser({ ...user, [e.target.name]: e.target.files[0] });
     }
   };
@@ -56,7 +63,19 @@ const Profile = () => {
       <div className={formClasses.title}>
         <h1>Profile</h1>
       </div>
-      <p>Preview Image</p>
+      <div className={classes.image_container}>
+        {(user.image || preview) && (
+          <RoundedImage
+            src={
+              preview
+                ? URL.createObjectURL(preview)
+                : `${import.meta.env.VITE_API_URL}/images/users/${user.image}`
+            }
+            alt={user.name}
+            width="large"
+          />
+        )}
+      </div>
       <form onSubmit={handleSubmit}>
         <Input
           text="Image"
