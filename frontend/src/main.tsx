@@ -12,6 +12,7 @@ import Home from "./routes/Home.tsx";
 import Register from "./routes/Auth/Register.tsx";
 import Login from "./routes/Auth/Login.tsx";
 import Profile from "./routes/User/Profile.tsx";
+import MyPets from "./routes/Pet/MyPets.tsx";
 
 // context
 import { UserProvider } from "./context/UserContext.tsx";
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
+      // Auth
       {
         path: "/register",
         element: <Register />,
@@ -32,9 +34,15 @@ const router = createBrowserRouter([
         path: "/login",
         element: <Login />,
       },
+      // User
       {
         path: "/user/profile",
         element: <Profile />,
+      },
+      // Pet
+      {
+        path: "/pet/mypets",
+        element: <MyPets />,
       },
     ],
   },
