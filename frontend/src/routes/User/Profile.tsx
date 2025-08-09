@@ -11,7 +11,7 @@ import Input from "../../components/form/Input";
 import RoundedImage from "../../components/layout/RoundedImage";
 
 // context
-import { UserContext } from "../../context/UserContext";
+import { AuthContext } from "../../context/AuthContext";
 
 import type { User } from "../../types/User";
 
@@ -25,7 +25,7 @@ const Profile = () => {
     confirmpassword: "",
   });
   const [preview, setPreview] = useState<File | null>(null);
-  const { updateUser } = useContext(UserContext);
+  const { updateUser } = useContext(AuthContext);
   const [token] = useState(localStorage.getItem("token") || "");
 
   useEffect(() => {

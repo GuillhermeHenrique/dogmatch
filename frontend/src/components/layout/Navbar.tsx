@@ -7,10 +7,10 @@ import classes from "./Navbar.module.css";
 import logo from "../../assets/images/logo.png";
 
 // context
-import { UserContext } from "../../context/UserContext";
+import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
-  const { authenticated, logout } = useContext(UserContext);
+  const { authenticated, logout } = useContext(AuthContext);
 
   const handleLogout = () => {
     logout();

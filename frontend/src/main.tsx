@@ -16,7 +16,7 @@ import MyPets from "./routes/Pet/MyPets.tsx";
 import AddPet from "./routes/Pet/AddPet.tsx";
 
 // context
-import { UserProvider } from "./context/UserContext.tsx";
+import { AuthProvider } from "./context/AuthContext.tsx";
 
 const router = createBrowserRouter([
   {
@@ -55,8 +55,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <UserProvider>
+    <AuthProvider>
       <RouterProvider router={router} />
-    </UserProvider>
+    </AuthProvider>
   </StrictMode>
 );

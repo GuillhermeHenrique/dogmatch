@@ -7,7 +7,7 @@ import classes from "./Form.module.css";
 import Input from "../../components/form/Input";
 
 // context
-import { UserContext } from "../../context/UserContext";
+import { AuthContext } from "../../context/AuthContext";
 
 import type { UserRegister } from "../../types/User";
 
@@ -19,7 +19,7 @@ const Register = () => {
     password: "",
     confirmpassword: "",
   });
-  const { register } = useContext(UserContext);
+  const { register } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -6,7 +6,7 @@ import { useAuth } from "../hooks/useAuth";
 import type { UserRegister, UserLogin, User } from "../types/User";
 import type { Pet } from "../types/Pet";
 
-type UserContextType = {
+type AuthContextType = {
   authenticated: boolean;
   register: (user: UserRegister) => Promise<void>;
   login: (user: UserLogin) => Promise<void>;
@@ -15,7 +15,7 @@ type UserContextType = {
   logout: () => void;
 };
 
-export const UserContext = createContext<UserContextType>({
+export const AuthContext = createContext<AuthContextType>({
   authenticated: false,
   register: async () => {},
   login: async () => {},
@@ -24,12 +24,12 @@ export const UserContext = createContext<UserContextType>({
   logout: () => {},
 });
 
-export const UserProvider = ({ children }: PropsWithChildren) => {
+export const AuthProvider = ({ children }: PropsWithChildren) => {
   const { authenticated, register, login, updateUser, registerPet, logout } =
     useAuth();
 
   return (
-    <UserContext.Provider
+    <AuthContext.Provider
       value={{
         authenticated,
         register,
@@ -40,6 +40,6 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
       }}
     >
       {children}
-    </UserContext.Provider>
+    </AuthContext.Provider>
   );
 };
