@@ -54,7 +54,7 @@ const AddPet = () => {
 
   return (
     <div className={formClasses.form_container}>
-      <div className={formClasses.title}>
+      <div className={`${formClasses.title} ${classes.title}`}>
         <h1>Register a Pet</h1>
       </div>
       <div className={classes.images_container}>
