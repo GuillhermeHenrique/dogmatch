@@ -28,7 +28,7 @@ const Navbar = () => {
         </div>
         <ul>
           <li>
-            <Link to="/">Adotar</Link>
+            <Link to="/">Adopt</Link>
           </li>
           {authenticated ? (
             <>
