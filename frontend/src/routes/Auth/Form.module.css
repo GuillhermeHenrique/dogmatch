@@ -10,6 +10,11 @@
 
 .form_container .title h1 {
   padding-left: 0.5em;
+  padding-bottom: 5px;
+}
+
+.form_container .title p {
+  padding-left: 1em;
 }
 
 .form_container input[type="submit"] {
@@ -29,10 +34,6 @@
 
 .form_container input[type="submit"]:hover {
   background-color: #028fed;
-}
-
-.form_container p {
-  text-align: center;
 }
 
 .form_container p a {

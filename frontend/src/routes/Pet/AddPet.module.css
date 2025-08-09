@@ -1,0 +1,35 @@
+.images_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 1em;
+}
+
+.images_container img {
+  max-width: 150px;
+  max-height: 150px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.select {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.select label {
+  font-size: 18px;
+}
+
+.select select {
+  padding: 0.7em;
+  border: 1px solid #b9b9b9;
+  border-radius: 5px;
+  color: #131313;
+  background-color: transparent;
+}
+
+.select select:focus {
+  outline: 3px solid #131313;
+}

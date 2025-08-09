@@ -10,11 +10,11 @@ const MyPets = () => {
     <>
       <div className={classes.title}>
         <h1>My Pets</h1>
-        <Link to="/pet/add">Register Pet</Link>
+        <Link to="/pet/add">Register a Pet</Link>
       </div>
       <div>
-        {pets.length > 0 && <p>My register pets:</p>}
-        {pets.length === 0 && <p>There is no register pets!</p>}
+        {pets.length > 0 && <p>My registered pets:</p>}
+        {pets.length === 0 && <p>There are no registered pets!</p>}
       </div>
     </>
   );

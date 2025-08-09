@@ -6,7 +6,9 @@ import api from "../utils/api";
 
 import { useFlashMessage } from "./useFlashMessage";
 
+// types
 import type { UserRegister, UserLogin, User } from "../types/User";
+import type { Pet } from "../types/Pet";
 
 type UserToken = {
   message: string;
@@ -44,7 +46,7 @@ export const useAuth = () => {
       const err = error as AxiosError<{ message: string }>;
 
       const msgText =
-        err.response?.data?.message || "An unexpected error occurred";
+        err.response?.data?.message || "An unexpected error occurred!";
 
       setFlashMessage(msgText, "error");
     }
@@ -61,7 +63,7 @@ export const useAuth = () => {
       const err = error as AxiosError<{ message: string }>;
 
       const msgText =
-        err.response?.data?.message || "An unexpected error occurred";
+        err.response?.data?.message || "An unexpected error occurred!";
 
       setFlashMessage(msgText, "error");
     }
@@ -103,7 +105,49 @@ export const useAuth = () => {
       const err = error as AxiosError<{ message: string }>;
 
       const msgText =
-        err.response?.data?.message || "An unexpected error occurred";
+        err.response?.data?.message || "An unexpected error occurred!";
+
+      setFlashMessage(msgText, "error");
+    }
+  };
+
+  const registerPet = async (pet: Pet) => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      setFlashMessage("User not authenticated!", "error");
+      return;
+    }
+
+    const formData = new FormData();
+
+    (Object.keys(pet) as (keyof Pet)[]).forEach((key) => {
+      const value = pet[key];
+
+      if (value === undefined || value === null) return;
+
+      if (key === "images" && Array.isArray(value)) {
+        value.forEach((image) => formData.append("images", image));
+      } else {
+        formData.append(key, String(value));
+      }
+    });
+
+    try {
+      const response = await api.post(`/pets/create`, formData, {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(token)}`,
+        },
+      });
+
+      setFlashMessage("Created successfully!", "success");
+
+      return response.data;
+    } catch (error) {
+      const err = error as AxiosError<{ message: string }>;
+
+      const msgText =
+        err.response?.data?.message || "An unexpected error occurred!";
 
       setFlashMessage(msgText, "error");
     }
@@ -117,5 +161,5 @@ export const useAuth = () => {
     setFlashMessage("Logout successful!", "success");
   };
 
-  return { authenticated, register, login, updateUser, logout };
+  return { authenticated, register, login, updateUser, registerPet, logout };
 };
