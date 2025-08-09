@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { Link, redirect } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import classes from "./Navbar.module.css";
 
@@ -11,11 +11,12 @@ import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
   const { authenticated, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
 
-    redirect("/");
+    navigate("/");
   };
 
   return (
