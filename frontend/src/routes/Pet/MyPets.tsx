@@ -8,10 +8,10 @@ import api from "../../utils/api";
 
 import RoundedImage from "../../components/layout/RoundedImage";
 
-import type { PetUser } from "../../types/Pet";
+import type { Pet } from "../../types/Pet";
 
 const MyPets = () => {
-  const [pets, setPets] = useState<PetUser[]>([]);
+  const [pets, setPets] = useState<Pet[]>([]);
   const [token] = useState(localStorage.getItem("token") || "");
 
   useEffect(() => {

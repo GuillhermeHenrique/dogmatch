@@ -1,4 +1,4 @@
-export interface Pet {
+export interface PetRegister {
   id: string;
   name: string;
   age: string;
@@ -7,7 +7,7 @@ export interface Pet {
   images: File[];
 }
 
-export interface PetUser {
+export interface Pet {
   id: string;
   name: string;
   age: string;

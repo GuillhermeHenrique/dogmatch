@@ -8,11 +8,11 @@ import formClasses from "../Auth/Form.module.css";
 
 import Input from "../../components/form/Input";
 
-import type { Pet } from "../../types/Pet";
+import type { PetRegister } from "../../types/Pet";
 import { AuthContext } from "../../context/AuthContext";
 
 const AddPet = () => {
-  const [pet, setPet] = useState<Pet>({
+  const [pet, setPet] = useState<PetRegister>({
     id: "",
     name: "",
     age: "",

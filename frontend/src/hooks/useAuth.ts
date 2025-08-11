@@ -8,7 +8,7 @@ import { useFlashMessage } from "./useFlashMessage";
 
 // types
 import type { UserRegister, UserLogin, User } from "../types/User";
-import type { Pet } from "../types/Pet";
+import type { PetRegister } from "../types/Pet";
 
 type UserToken = {
   message: string;
@@ -111,7 +111,7 @@ export const useAuth = () => {
     }
   };
 
-  const registerPet = async (pet: Pet) => {
+  const registerPet = async (pet: PetRegister) => {
     const token = localStorage.getItem("token");
 
     if (!token) {
@@ -121,7 +121,7 @@ export const useAuth = () => {
 
     const formData = new FormData();
 
-    (Object.keys(pet) as (keyof Pet)[]).forEach((key) => {
+    (Object.keys(pet) as (keyof PetRegister)[]).forEach((key) => {
       const value = pet[key];
 
       if (value === undefined || value === null) return;

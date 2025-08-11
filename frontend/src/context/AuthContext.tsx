@@ -4,14 +4,14 @@ import { useAuth } from "../hooks/useAuth";
 
 // types
 import type { UserRegister, UserLogin, User } from "../types/User";
-import type { Pet } from "../types/Pet";
+import type { PetRegister } from "../types/Pet";
 
 type AuthContextType = {
   authenticated: boolean;
   register: (user: UserRegister) => Promise<void>;
   login: (user: UserLogin) => Promise<void>;
   updateUser: (user: User) => Promise<void>;
-  registerPet: (pet: Pet) => Promise<void>;
+  registerPet: (pet: PetRegister) => Promise<void>;
   logout: () => void;
 };
 
