@@ -102,6 +102,7 @@ export default class PetController {
       const pets = await prisma.pet.findMany({
         where: { userId: user.id },
         orderBy: { createdAt: "desc" },
+        include: { images: true },
       });
 
       res.status(200).json({ pets });
