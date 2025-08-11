@@ -1,0 +1,73 @@
+.title {
+  margin-bottom: 1em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title h1 {
+  margin-bottom: 0.5em;
+}
+
+.btn {
+  padding: 15px 25px;
+  background-color: #131313;
+  border-radius: 25px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.btn:hover {
+  background-color: #028fed;
+}
+
+.title .btn_register a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.petlist_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+}
+
+.petlist_row {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5em 1em;
+}
+
+.petlist_row img {
+  margin: 0 auto;
+}
+
+.petlist_row span {
+  margin: 1em auto;
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+}
+
+.petlist_row .btn_edit {
+  text-decoration: none;
+  background-color: #028fed;
+}
+
+.petlist_row .btn_edit:hover {
+  opacity: 0.8;
+}
+
+.petlist_row .btn_remove {
+  background-color: #131313;
+}
+
+.petlist_row .btn_remove:hover {
+  opacity: 0.95;
+}
