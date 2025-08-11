@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
 
-import classes from "./Dashboard.module.css";
+import classes from "./MyPets.module.css";
 
 import api from "../../utils/api";
 
