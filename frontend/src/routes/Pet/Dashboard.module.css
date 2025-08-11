@@ -32,8 +32,7 @@
 .petlist_container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 2em;
+  gap: 2.1em;
 }
 
 .petlist_row {
