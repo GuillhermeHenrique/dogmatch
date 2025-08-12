@@ -4,7 +4,7 @@ import { useAuth } from "../hooks/useAuth";
 
 // types
 import type { UserRegister, UserLogin, User } from "../types/User";
-import type { PetRegister } from "../types/Pet";
+import type { PetFormData, PetRegister } from "../types/Pet";
 
 type AuthContextType = {
   authenticated: boolean;
@@ -12,6 +12,7 @@ type AuthContextType = {
   login: (user: UserLogin) => Promise<void>;
   updateUser: (user: User) => Promise<void>;
   registerPet: (pet: PetRegister) => Promise<void>;
+  updatePet: (pet: PetFormData) => Promise<void>;
   logout: () => void;
 };
 
@@ -21,12 +22,20 @@ export const AuthContext = createContext<AuthContextType>({
   login: async () => {},
   updateUser: async () => {},
   registerPet: async () => {},
+  updatePet: async () => {},
   logout: () => {},
 });
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
-  const { authenticated, register, login, updateUser, registerPet, logout } =
-    useAuth();
+  const {
+    authenticated,
+    register,
+    login,
+    updateUser,
+    registerPet,
+    updatePet,
+    logout,
+  } = useAuth();
 
   return (
     <AuthContext.Provider
@@ -36,6 +45,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
         login,
         updateUser,
         registerPet,
+        updatePet,
         logout,
       }}
     >

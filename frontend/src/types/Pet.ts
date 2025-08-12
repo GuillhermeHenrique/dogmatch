@@ -18,6 +18,16 @@ export interface Pet {
   images: Image[];
 }
 
+export interface PetFormData {
+  id: string;
+  name: string;
+  age: string;
+  weight: string;
+  color: string;
+  adoptedById?: string;
+  images: (Image | File)[];
+}
+
 type Image = {
   url: string;
 };

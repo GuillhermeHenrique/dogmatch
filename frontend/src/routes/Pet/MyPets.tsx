@@ -45,7 +45,7 @@ const MyPets = () => {
         },
       });
 
-      const updatedPets = pets.filter((pet) => pet.id != id);
+      const updatedPets = pets.filter((pet) => pet.id !== id);
 
       setPets(updatedPets);
 
