@@ -131,7 +131,10 @@ export default class PetController {
     const id = req.params.id;
 
     // check if pet exists
-    const pet = await prisma.pet.findFirst({ where: { id } });
+    const pet = await prisma.pet.findFirst({
+      where: { id },
+      include: { images: true },
+    });
 
     if (!pet) {
       res.status(404).json({ message: "Pet not found!" });
@@ -178,7 +181,7 @@ export default class PetController {
   static async updatePet(req, res) {
     const id = req.params.id;
 
-    const { name, age, weight, color, available } = req.body;
+    const { name, age, weight, color } = req.body;
 
     const images = req.files;
 
@@ -232,19 +235,12 @@ export default class PetController {
       return;
     }
 
-    if (!images || images.length === 0) {
-      res.status(422).json({ message: "Image is required!" });
-
-      return;
-    }
-
     // create a updated pet
     const updatedPet = {
       name,
       age: parsedAge,
       weight: parsedWeight,
       color,
-      available,
     };
 
     try {
@@ -253,18 +249,20 @@ export default class PetController {
         where: { id },
       });
 
-      await prisma.petImage.deleteMany({ where: { petId: id } });
+      if (images.length > 0) {
+        await prisma.petImage.deleteMany({ where: { petId: id } });
 
-      await Promise.all(
-        images.map((image) => {
-          const petImage = {
-            url: image.filename,
-            petId: newPet.id,
-          };
+        await Promise.all(
+          images.map((image) => {
+            const petImage = {
+              url: image.filename,
+              petId: newPet.id,
+            };
 
-          return prisma.petImage.create({ data: petImage });
-        })
-      );
+            return prisma.petImage.create({ data: petImage });
+          })
+        );
+      }
 
       res.status(200).json({ message: "Pet successfully updated!" });
     } catch (error) {
