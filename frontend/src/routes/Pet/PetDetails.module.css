@@ -1,0 +1,76 @@
+.pet_container {
+  display: flex;
+  max-width: 1400px;
+  margin: 3em auto;
+  gap: 2em;
+}
+
+.image_container {
+  display: flex;
+  justify-content: end;
+  flex-wrap: wrap;
+  gap: 1em;
+  width: 50%;
+}
+
+.image_container img {
+  max-width: 600px;
+  max-height: 250px;
+  border-radius: 10px;
+}
+
+.description_container {
+  width: 50%;
+}
+
+.title {
+  margin-bottom: 1em;
+}
+
+.title span {
+  font-size: 35px;
+  font-weight: 900;
+  padding-left: 5px;
+}
+
+.age_container {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 1em;
+}
+
+.weight {
+  margin-bottom: 2em;
+}
+
+span {
+  font-size: 20px;
+  font-weight: 600;
+  color: #028fed;
+}
+
+p {
+  font-size: 20px;
+  font-weight: 600;
+  color: #363636;
+}
+
+.description_container button,
+.description_container a {
+  text-align: center;
+  padding: 15px 25px;
+  background-color: #131313;
+  border-radius: 25px;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.description_container button,
+.description_container a:hover {
+  background-color: #028fed;
+}

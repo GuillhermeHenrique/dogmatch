@@ -15,6 +15,7 @@ import Profile from "./routes/User/Profile.tsx";
 import MyPets from "./routes/Pet/MyPets.tsx";
 import AddPet from "./routes/Pet/AddPet.tsx";
 import EditPet from "./routes/Pet/EditPet.tsx";
+import PetDetails from "./routes/Pet/PetDetails.tsx";
 
 // context
 import { AuthProvider } from "./context/AuthContext.tsx";
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: "/pet/edit/:id",
         element: <EditPet />,
+      },
+      {
+        path: "/pet/:id",
+        element: <PetDetails />,
       },
     ],
   },
