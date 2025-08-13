@@ -155,7 +155,7 @@ const EditPet = () => {
             ))}
           </select>
         </div>
-        <input type="submit" value="Register pet" />
+        <input type="submit" value="Update pet" />
       </form>
     </div>
   );
