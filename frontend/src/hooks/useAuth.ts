@@ -201,6 +201,34 @@ export const useAuth = () => {
     }
   };
 
+  const schedule = async (id: string) => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      setFlashMessage("User not authenticated!", "error");
+      return;
+    }
+
+    try {
+      const response = await api.patch(`/pets/schedule/${id}`, null, {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(token)}`,
+        },
+      });
+
+      setFlashMessage(response.data.message, "success");
+
+      return response.data;
+    } catch (error) {
+      const err = error as AxiosError<{ message: string }>;
+
+      const msgText =
+        err.response?.data?.message || "An unexpected error occurred!";
+
+      setFlashMessage(msgText, "error");
+    }
+  };
+
   const logout = () => {
     setAuthenticated(false);
     localStorage.removeItem("token");
@@ -216,6 +244,7 @@ export const useAuth = () => {
     updateUser,
     registerPet,
     updatePet,
+    schedule,
     logout,
   };
 };

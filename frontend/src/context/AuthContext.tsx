@@ -13,6 +13,7 @@ type AuthContextType = {
   updateUser: (user: User) => Promise<void>;
   registerPet: (pet: PetRegister) => Promise<void>;
   updatePet: (pet: PetFormData) => Promise<void>;
+  schedule: (id: string) => Promise<void>;
   logout: () => void;
 };
 
@@ -23,6 +24,7 @@ export const AuthContext = createContext<AuthContextType>({
   updateUser: async () => {},
   registerPet: async () => {},
   updatePet: async () => {},
+  schedule: async () => {},
   logout: () => {},
 });
 
@@ -34,6 +36,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     updateUser,
     registerPet,
     updatePet,
+    schedule,
     logout,
   } = useAuth();
 
@@ -46,6 +49,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
         updateUser,
         registerPet,
         updatePet,
+        schedule,
         logout,
       }}
     >

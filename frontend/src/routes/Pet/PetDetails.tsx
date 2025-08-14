@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { Link, useParams } from "react-router-dom";
 
 import classes from "./PetDetails.module.css";
 
 import api from "../../utils/api";
+
+// context
+import { AuthContext } from "../../context/AuthContext";
 
 import type { Pet } from "../../types/Pet";
 
@@ -18,6 +21,7 @@ const PetDetails = () => {
     images: [],
   });
   const [token] = useState(localStorage.getItem("token") || "");
+  const { schedule } = useContext(AuthContext);
   const { id } = useParams();
 
   useEffect(() => {
@@ -33,6 +37,12 @@ const PetDetails = () => {
 
     getPetData();
   }, [id]);
+
+  const handleAdoption = async () => {
+    if (id) {
+      schedule(id);
+    }
+  };
 
   return (
     <>
@@ -61,7 +71,11 @@ const PetDetails = () => {
             <p className={classes.weight}>
               <span>Weight:</span> {pet.age} Kg
             </p>
-            {token ? <button>Adopt</button> : <Link to="/register">Adopt</Link>}
+            {token ? (
+              <button onClick={handleAdoption}>Adopt</button>
+            ) : (
+              <Link to="/register">Adopt</Link>
+            )}
           </div>
         </div>
       )}

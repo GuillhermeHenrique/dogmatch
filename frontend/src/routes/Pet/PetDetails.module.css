@@ -70,7 +70,7 @@
   transition: 0.5s;
 }
 
-.pet_container .description_container button,
+.pet_container .description_container button:hover,
 .pet_container .description_container a:hover {
   background-color: #028fed;
 }
