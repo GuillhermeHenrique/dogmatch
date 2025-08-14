@@ -74,7 +74,7 @@ const PetDetails = () => {
             {token ? (
               <button onClick={handleAdoption}>Adopt</button>
             ) : (
-              <Link to="/register">Adopt</Link>
+              <Link to="/register">Request a visit</Link>
             )}
           </div>
         </div>
