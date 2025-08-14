@@ -14,33 +14,33 @@
   gap: 2.1em;
 }
 
-.petlist_row {
+.petlist_card {
   display: flex;
   flex-direction: column;
   margin: 0.5em 1em;
 }
 
-.petlist_row img {
+.petlist_card img {
   margin: 0 auto;
 }
 
-.petlist_row h2 {
+.petlist_card h2 {
   margin: 0.5em auto;
 }
 
-.petlist_row .contact {
+.petlist_card .contact {
   display: flex;
   margin-bottom: 1em;
 }
 
-.petlist_row .contact span {
+.petlist_card .contact span {
   color: #242424;
   font-weight: 700;
   font-size: 20px;
   margin-right: 5px;
 }
 
-.petlist_row .contact p {
+.petlist_card .contact p {
   color: #028fed;
   font-weight: 800;
   font-size: 20px;

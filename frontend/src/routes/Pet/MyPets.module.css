@@ -35,38 +35,49 @@
   gap: 2.1em;
 }
 
-.petlist_row {
+.petlist_card {
   display: flex;
   flex-direction: column;
   margin: 0.5em 1em;
+  max-width: 300px;
 }
 
-.petlist_row img {
+.petlist_card img {
   margin: 0 auto;
 }
 
-.petlist_row h2 {
+.petlist_card h2 {
   margin: 1em auto;
 }
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 15px;
 }
 
-.petlist_row .btn_edit {
-  text-decoration: none;
+.petlist_card .btn_adopt {
   background-color: #028fed;
 }
 
-.petlist_row .btn_edit:hover {
+.petlist_card .btn_adopt:hover {
   opacity: 0.8;
 }
 
-.petlist_row .btn_remove {
+.petlist_card .btn_edit {
+  text-decoration: none;
   background-color: #131313;
 }
 
-.petlist_row .btn_remove:hover {
-  opacity: 0.95;
+.petlist_card .btn_edit:hover {
+  opacity: 0.9;
+}
+
+.petlist_card .btn_remove {
+  background-color: #e80000;
+}
+
+.petlist_card .btn_remove:hover {
+  opacity: 0.9;
 }

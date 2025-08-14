@@ -40,7 +40,7 @@ const MyAdoptions = () => {
       <div className={classes.petlist_container}>
         {pets.length > 0 &&
           pets.map((pet) => (
-            <div key={pet.id} className={classes.petlist_row}>
+            <div key={pet.id} className={classes.petlist_card}>
               <RoundedImage
                 src={`${import.meta.env.VITE_API_URL}/images/pets/${
                   pet.images[0].url
