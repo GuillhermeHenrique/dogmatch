@@ -120,6 +120,12 @@ export default class PetController {
     try {
       const pets = await prisma.pet.findMany({
         where: { adoptedById: user.id },
+        include: {
+          images: true,
+          user: {
+            select: { name: true, phone: true },
+          },
+        },
       });
 
       res.status(200).json({ pets });
