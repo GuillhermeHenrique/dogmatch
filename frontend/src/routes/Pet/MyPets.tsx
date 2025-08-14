@@ -62,6 +62,27 @@ const MyPets = () => {
     }
   };
 
+  const concludeAdoption = async (id: string) => {
+    try {
+      const response = await api.patch(`/pets/conclude/${id}`, {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(token)}`,
+        },
+      });
+
+      setFlashMessage(response.data.message, "success");
+
+      return response.data;
+    } catch (error) {
+      const err = error as AxiosError<{ message: string }>;
+
+      const msgText =
+        err.response?.data?.message || "An unexpected error occurred!";
+
+      setFlashMessage(msgText, "error");
+    }
+  };
+
   return (
     <>
       <div className={classes.title}>
@@ -86,7 +107,10 @@ const MyPets = () => {
                 {pet.available ? (
                   <>
                     {pet.adoptedById && (
-                      <button className={`${classes.btn} ${classes.btn_adopt}`}>
+                      <button
+                        className={`${classes.btn} ${classes.btn_adopt}`}
+                        onClick={() => concludeAdoption(pet.id)}
+                      >
                         Concluir adoção
                       </button>
                     )}
