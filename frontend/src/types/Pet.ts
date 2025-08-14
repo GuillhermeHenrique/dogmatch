@@ -15,6 +15,7 @@ export interface Pet {
   color: string;
   available?: boolean;
   adoptedById?: string;
+  user?: { phone: string; name: string };
   images: Image[];
 }
 

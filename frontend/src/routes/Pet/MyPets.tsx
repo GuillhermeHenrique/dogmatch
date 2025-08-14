@@ -81,9 +81,7 @@ const MyPets = () => {
                 alt={pet.name}
                 width="large"
               />
-              <span>
-                <h2>{pet.name}</h2>
-              </span>
+              <h2>{pet.name}</h2>
               <div className={classes.actions}>
                 {pet.available ? (
                   <>

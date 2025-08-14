@@ -1,0 +1,55 @@
+.title {
+  margin-bottom: 1em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title h1 {
+  margin-bottom: 0.5em;
+}
+
+.petlist_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.1em;
+}
+
+.petlist_row {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5em 1em;
+}
+
+.petlist_row img {
+  margin: 0 auto;
+}
+
+.petlist_row h2 {
+  margin: 0.5em auto;
+}
+
+.petlist_row .contact {
+  display: flex;
+  margin-bottom: 1em;
+}
+
+.petlist_row .contact span {
+  color: #242424;
+  font-weight: 700;
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.petlist_row .contact p {
+  color: #028fed;
+  font-weight: 800;
+  font-size: 20px;
+  text-decoration: dashed;
+}
+
+.available p {
+  font-size: 20px;
+  font-weight: 800;
+  color: #028fed;
+  text-align: center;
+}
