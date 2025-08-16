@@ -26,6 +26,21 @@
   border-radius: 10px;
 }
 
+.pet_card .age_container {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+.pet_card .age_container span,
+.pet_card .age_container p {
+  font-weight: 800;
+}
+
+.pet_card .age_container span {
+  color: #028fed;
+}
+
 .pet_card a {
   width: 80%;
   margin: 0 auto;

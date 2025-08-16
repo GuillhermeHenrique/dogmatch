@@ -7,20 +7,25 @@
 
 .image_container {
   display: flex;
-  justify-content: end;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 1em;
   width: 50%;
 }
 
 .image_container img {
-  max-width: 600px;
-  max-height: 250px;
+  max-width: 50%;
+  max-height: 50%;
   border-radius: 10px;
+  object-fit: cover;
 }
 
 .description_container {
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: 370px;
 }
 
 .description_container .title {
@@ -36,22 +41,18 @@
 .age_container {
   display: flex;
   gap: 5px;
-  margin-bottom: 1em;
-}
-
-.weight {
-  margin-bottom: 1.5em;
+  margin-bottom: 0.7em;
 }
 
 .pet_container span {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 800;
   color: #028fed;
 }
 
 .pet_container p {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 800;
   color: #363636;
 }
 
@@ -65,6 +66,7 @@
   text-decoration: none;
   font-weight: 600;
   color: #fff;
+  max-width: 35vh;
   border: none;
   cursor: pointer;
   transition: 0.5s;

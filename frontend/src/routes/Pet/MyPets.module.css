@@ -57,6 +57,12 @@
   gap: 15px;
 }
 
+.actions p {
+  font-size: 20px;
+  font-weight: 900;
+  color: #028fed;
+}
+
 .petlist_card .btn_adopt {
   background-color: #028fed;
 }

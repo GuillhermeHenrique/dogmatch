@@ -43,7 +43,15 @@ const Home = () => {
               ></div>
               <h2>{pet.name}</h2>
               <p>
-                <span>Weight:</span> {pet.weight} Kg
+                {pet.age == "1" ? (
+                  <div className={classes.age_container}>
+                    <span>Age: </span> <p>{pet.age} Year</p>
+                  </div>
+                ) : (
+                  <div className={classes.age_container}>
+                    <span>Age: </span> <p>{pet.age} Years</p>
+                  </div>
+                )}
               </p>
               {pet.available ? (
                 <Link to={`/pet/${pet.id}`}>More datails</Link>

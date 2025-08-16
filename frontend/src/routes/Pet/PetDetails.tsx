@@ -60,17 +60,19 @@ const PetDetails = () => {
           <div className={classes.description_container}>
             <div className={classes.title}>
               <h1>
-                Metting the Pet: <span>{pet.name}</span>
+                Meeting the Pet: <span>{pet.name}</span>
               </h1>
-              <p>If you're interesting, make a such call</p>
+              <p>If you're interested, call the pet's owner</p>
             </div>
-            <div className={classes.age_container}>
-              <span>Age: </span> <p>{pet.age}</p>
-              {pet.age == "1" ? <p>Year</p> : <p>Years</p>}
+            <div className={classes.information_container}>
+              <div className={classes.age_container}>
+                <span>Age: </span> <p>{pet.age}</p>
+                {pet.age == "1" ? <p>Year</p> : <p>Years</p>}
+              </div>
+              <p className={classes.weight}>
+                <span>Weight:</span> {pet.age} Kg
+              </p>
             </div>
-            <p className={classes.weight}>
-              <span>Weight:</span> {pet.age} Kg
-            </p>
             {token ? (
               <button onClick={handleAdoption}>Adopt</button>
             ) : (
