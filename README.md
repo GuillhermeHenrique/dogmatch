@@ -6,7 +6,7 @@ DogMatch is a fully functional and scalable pet adoption platform built from scr
 
 ## Main Features
 
-### Back-End (Node + Express)
+### Back-end (Node + Express)
 - RESTful API built with Node.js + Express
 - JWT-based authentication for secure routes
 - Password hashing with Bcrypt
@@ -17,7 +17,7 @@ DogMatch is a fully functional and scalable pet adoption platform built from scr
 - Database management using Prisma ORM with MySQL
 - Relations between users and pets (ownership and adoption)
 
-### Front-End (React + TypeScript)
+### Front-end (React + TypeScript)
 - Responsive UI built with React + TypeScript
 - User registration, login, and profile editing
 - Display all pets, user’s own pets, and adopted pets
@@ -29,7 +29,7 @@ DogMatch is a fully functional and scalable pet adoption platform built from scr
 
 ---
 
-## Technologies
+## Technologies Used
 
 ### Back-end:
 - Node.js
