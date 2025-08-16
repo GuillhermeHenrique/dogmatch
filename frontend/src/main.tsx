@@ -19,7 +19,7 @@ import PetDetails from "./routes/Pet/PetDetails.tsx";
 import MyAdoptions from "./routes/Pet/MyAdoptions.tsx";
 
 // context
-import { AuthProvider } from "./context/AuthContext.tsx";
+import { ApiProvider } from "./context/ApiContext.tsx";
 
 const router = createBrowserRouter([
   {
@@ -70,8 +70,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <AuthProvider>
+    <ApiProvider>
       <RouterProvider router={router} />
-    </AuthProvider>
+    </ApiProvider>
   </StrictMode>
 );

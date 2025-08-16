@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import classes from "./MyPets.module.css";
 
@@ -8,9 +8,9 @@ import api from "../../utils/api";
 
 import RoundedImage from "../../components/layout/RoundedImage";
 
-import type { AxiosError } from "axios";
-
 import { useFlashMessage } from "../../hooks/useFlashMessage";
+
+import type { AxiosError } from "axios";
 
 import type { Pet } from "../../types/Pet";
 
@@ -18,6 +18,7 @@ const MyPets = () => {
   const [pets, setPets] = useState<Pet[]>([]);
   const [token] = useState(localStorage.getItem("token") || "");
   const { setFlashMessage } = useFlashMessage();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const showPets = async () => {
@@ -71,6 +72,10 @@ const MyPets = () => {
       });
 
       setFlashMessage(response.data.message, "success");
+
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
 
       return response.data;
     } catch (error) {

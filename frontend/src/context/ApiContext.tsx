@@ -1,12 +1,12 @@
 import { createContext, type PropsWithChildren } from "react";
 
-import { useAuth } from "../hooks/useAuth";
+import { useApi } from "../hooks/useApi";
 
 // types
 import type { UserRegister, UserLogin, User } from "../types/User";
 import type { PetFormData, PetRegister } from "../types/Pet";
 
-type AuthContextType = {
+type ApiContextType = {
   authenticated: boolean;
   register: (user: UserRegister) => Promise<void>;
   login: (user: UserLogin) => Promise<void>;
@@ -17,7 +17,7 @@ type AuthContextType = {
   logout: () => void;
 };
 
-export const AuthContext = createContext<AuthContextType>({
+export const ApiContext = createContext<ApiContextType>({
   authenticated: false,
   register: async () => {},
   login: async () => {},
@@ -28,7 +28,7 @@ export const AuthContext = createContext<AuthContextType>({
   logout: () => {},
 });
 
-export const AuthProvider = ({ children }: PropsWithChildren) => {
+export const ApiProvider = ({ children }: PropsWithChildren) => {
   const {
     authenticated,
     register,
@@ -38,10 +38,10 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     updatePet,
     schedule,
     logout,
-  } = useAuth();
+  } = useApi();
 
   return (
-    <AuthContext.Provider
+    <ApiContext.Provider
       value={{
         authenticated,
         register,
@@ -54,6 +54,6 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       }}
     >
       {children}
-    </AuthContext.Provider>
+    </ApiContext.Provider>
   );
 };

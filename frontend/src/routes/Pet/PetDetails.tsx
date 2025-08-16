@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import classes from "./PetDetails.module.css";
 
 import api from "../../utils/api";
 
 // context
-import { AuthContext } from "../../context/AuthContext";
+import { ApiContext } from "../../context/ApiContext";
 
 import type { Pet } from "../../types/Pet";
 
@@ -21,8 +21,9 @@ const PetDetails = () => {
     images: [],
   });
   const [token] = useState(localStorage.getItem("token") || "");
-  const { schedule } = useContext(AuthContext);
+  const { schedule } = useContext(ApiContext);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getPetData = async () => {
@@ -41,6 +42,10 @@ const PetDetails = () => {
   const handleAdoption = async () => {
     if (id) {
       schedule(id);
+
+      setTimeout(() => {
+        navigate("/pet/myadoptions");
+      }, 3000);
     }
   };
 

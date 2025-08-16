@@ -16,7 +16,7 @@ type UserToken = {
   UserId: string;
 };
 
-export const useAuth = () => {
+export const useApi = () => {
   const [authenticated, setAuthenticated] = useState<boolean>(false);
   const { setFlashMessage } = useFlashMessage();
 

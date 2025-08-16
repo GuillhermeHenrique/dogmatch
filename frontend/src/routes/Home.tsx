@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 
+import { Link } from "react-router-dom";
+
 import classes from "./Home.module.css";
 
 import api from "../utils/api";
 
 import type { Pet } from "../types/Pet";
-import { Link } from "react-router-dom";
 
 const Home = () => {
   const [pets, setPets] = useState<Pet[]>([]);

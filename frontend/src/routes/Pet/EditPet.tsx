@@ -11,7 +11,7 @@ import api from "../../utils/api";
 import Input from "../../components/form/Input";
 
 // context
-import { AuthContext } from "../../context/AuthContext";
+import { ApiContext } from "../../context/ApiContext";
 
 import type { PetFormData } from "../../types/Pet";
 
@@ -28,7 +28,7 @@ const EditPet = () => {
   const colors = ["white", "black", "gray", "caramel", "mixed"];
   const navigate = useNavigate();
   const [token] = useState(localStorage.getItem("token") || "");
-  const { updatePet } = useContext(AuthContext);
+  const { updatePet } = useContext(ApiContext);
   const { id } = useParams();
 
   useEffect(() => {

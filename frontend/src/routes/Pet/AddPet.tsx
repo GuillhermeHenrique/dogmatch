@@ -8,8 +8,10 @@ import formClasses from "../Auth/Form.module.css";
 
 import Input from "../../components/form/Input";
 
+// context
+import { ApiContext } from "../../context/ApiContext";
+
 import type { PetRegister } from "../../types/Pet";
-import { AuthContext } from "../../context/AuthContext";
 
 const AddPet = () => {
   const [pet, setPet] = useState<PetRegister>({
@@ -22,7 +24,7 @@ const AddPet = () => {
   });
   const [preview, setPreview] = useState<File[]>([]);
   const colors = ["white", "black", "gray", "caramel", "mixed"];
-  const { registerPet } = useContext(AuthContext);
+  const { registerPet } = useContext(ApiContext);
   const navigate = useNavigate();
 
   const fileOnChange = (e: ChangeEvent<HTMLInputElement>) => {
