@@ -145,8 +145,6 @@ DogMatch is a fully functional and scalable pet adoption platform built from scr
   - `pets`: one-to-many with `Pet` (as owner, relation: `UserPets`)  
   - `adoptions`: one-to-many with `Pet` (as adopter, relation: `UserAdoptions`)  
 
----
-
 ### Pet
 - **Fields:**  
   - `id` (String, UUID, Primary Key)  
@@ -163,8 +161,6 @@ DogMatch is a fully functional and scalable pet adoption platform built from scr
   - `images`: one-to-many with `PetImage`  
   - `user`: many-to-one with `User` (owner, relation: `UserPets`, cascade on delete)  
   - `adopter`: many-to-one with `User` (adopter, relation: `UserAdoptions`, cascade on delete)  
-
----
 
 ### PetImage
 - **Fields:**  
